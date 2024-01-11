@@ -2,8 +2,8 @@ import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomRichText extends ConsumerWidget {
-  const CustomRichText({
+class AuthenticationRichText extends ConsumerWidget {
+  const AuthenticationRichText({
     super.key,
   });
 

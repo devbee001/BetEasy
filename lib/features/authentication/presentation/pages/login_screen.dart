@@ -1,4 +1,4 @@
-import 'package:bet_easy/features/authentication/presentation/widgets/custom_richtext.dart';
+import 'package:bet_easy/features/authentication/presentation/widgets/auth_rich_text.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/page_indicator.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/stacked_image.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/welcome_note.dart';
@@ -21,7 +21,7 @@ class LoginScreen extends ConsumerWidget {
                 children: [
                   const StackedImage(),
                   Space.h(
-                    80,
+                    70,
                   ),
                   const WelcomeNote(),
                   Space.h(
@@ -38,9 +38,9 @@ class LoginScreen extends ConsumerWidget {
                     ),
                   ),
                   Space.h(
-                    30,
+                    20,
                   ),
-                  const CustomRichText(),
+                  const AuthenticationRichText(),
                 ],
               ))),
     );

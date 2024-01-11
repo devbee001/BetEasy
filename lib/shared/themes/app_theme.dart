@@ -20,6 +20,7 @@ class AppTheme {
   static const Color textColor4 = Color(0xffFFFFFF);
 
   static const Color backgroundColor = Color(0xff000000);
+  static const Color borderColor = Color(0xffBBBFD0);
 
   static const TextStyle titleRegular = TextStyle(
     fontSize: 18,
