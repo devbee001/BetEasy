@@ -1,3 +1,4 @@
+import 'package:bet_easy/features/authentication/presentation/widgets/custom_richtext.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/page_indicator.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/stacked_image.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/welcome_note.dart';
@@ -20,23 +21,26 @@ class LoginScreen extends ConsumerWidget {
                 children: [
                   const StackedImage(),
                   Space.h(
-                    90,
+                    80,
                   ),
                   const WelcomeNote(),
+                  Space.h(
+                    10,
+                  ),
                   const PageIndicator(),
                   Space.h(
                     45,
                   ),
                   const Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
-                    child: CustomButton(),
+                    child: CustomButton(
+                      onPressed: null,
+                    ),
                   ),
                   Space.h(
-                    45,
+                    30,
                   ),
-                  const Text(
-                    'Don\'t have an account? Sign Up',
-                  ),
+                  const CustomRichText(),
                 ],
               ))),
     );
