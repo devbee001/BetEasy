@@ -1,4 +1,4 @@
-import 'package:bet_easy/features/home/presentation/pages/home_screen.dart';
+import 'package:bet_easy/features/skeleton/skeleton_screen.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: AppTheme.themeData,
-              home: const HomeScreen());
+              home: const Skeleton());
         });
   }
 }

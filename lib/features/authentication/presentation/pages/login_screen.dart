@@ -34,6 +34,7 @@ class LoginScreen extends ConsumerWidget {
                   const Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
                     child: CustomButton(
+                      leading: true,
                       onPressed: null,
                     ),
                   ),
