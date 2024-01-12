@@ -30,20 +30,24 @@ class TrackScreenState extends ConsumerState<TrackScreen> {
               scale: 2,
             ),
           ),
-          Align(
-            alignment: const Alignment(0.82, -0.2),
-            child: Image.asset(
-              'assets/images/track_pos.png',
-              scale: 2,
-            ),
-          ),
-          Align(
-            alignment: const Alignment(-0.8, 0.14),
-            child: Image.asset(
-              'assets/images/start_pos.png',
-              scale: 2,
-            ),
-          ),
+          LayoutBuilder(builder: (context, constraints) {
+            return Align(
+              alignment: Alignment(0.8 * constraints.maxWidth / 411, -0.2),
+              child: Image.asset(
+                'assets/images/track_pos.png',
+                scale: 2,
+              ),
+            );
+          }),
+          LayoutBuilder(builder: (context, constraints) {
+            return Align(
+              alignment: Alignment(-0.72 * constraints.maxWidth / 411, 0.14),
+              child: Image.asset(
+                'assets/images/start_pos.png',
+                scale: 2,
+              ),
+            );
+          }),
           Container(
             margin: EdgeInsets.only(
               left: 20.w,

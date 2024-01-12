@@ -198,7 +198,7 @@ class HomeStackedImage extends ConsumerWidget {
               alignment: const Alignment(-1, 1),
               child: Container(
                 margin: EdgeInsets.only(left: 22.w),
-                height: 50.h,
+                height: 60.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

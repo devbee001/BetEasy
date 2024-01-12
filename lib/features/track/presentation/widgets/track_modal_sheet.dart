@@ -48,6 +48,7 @@ class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
       return DraggableScrollableSheet(
         key: _sheet,
         initialChildSize: 0.12,
+        // 0.12,
         maxChildSize: 0.8,
         minChildSize: 0,
         expand: true,
