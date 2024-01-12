@@ -1,3 +1,4 @@
+import 'package:bet_easy/features/home/presentation/pages/home_screen.dart';
 import 'package:bet_easy/features/skeleton/widgets/skeleton_nav_bar.dart';
 
 import 'package:flutter/material.dart';
@@ -11,9 +12,9 @@ class Skeleton extends ConsumerWidget {
       Container(),
       const Material(),
     ];
-    return Scaffold(
-      body: pages[0],
-      bottomNavigationBar: const SkeletonNavigationBar(),
+    return const Scaffold(
+      body: SafeArea(child: HomeScreen()),
+      bottomNavigationBar: SkeletonNavigationBar(),
     );
   }
 }

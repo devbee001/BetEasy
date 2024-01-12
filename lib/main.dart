@@ -1,3 +1,4 @@
+import 'package:bet_easy/features/home/presentation/pages/home_screen.dart';
 import 'package:bet_easy/features/skeleton/skeleton_screen.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';

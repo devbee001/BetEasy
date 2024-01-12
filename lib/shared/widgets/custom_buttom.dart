@@ -13,7 +13,11 @@ class CustomButton extends ConsumerWidget {
   final bool leading;
   final bool trailing;
   final double trailingWidth;
+  final double leadingWidth;
+  final String btnText;
   const CustomButton({
+    this.leadingWidth = 0,
+    required this.btnText,
     this.trailingWidth = 21,
     this.leading = false,
     this.trailing = false,
@@ -56,8 +60,9 @@ class CustomButton extends ConsumerWidget {
                                   AssetImage('assets/images/icon-google.png'))),
                     )
                   : const SizedBox.shrink(),
-              const Text(
-                'Login With Google',
+              Space.w(leadingWidth),
+              Text(
+                btnText,
                 style: AppTheme.bodyRegular,
               ),
               trailing ? Space.w(trailingWidth) : const SizedBox.shrink(),

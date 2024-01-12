@@ -21,6 +21,8 @@ class AppTheme {
 
   static const Color backgroundColor = Color(0xff000000);
   static const Color borderColor = Color(0xffBBBFD0);
+  static const Color borderColor2 = Color(0xff2E3E5C);
+  static const Color borderColor3 = Color(0xffE5F0FC);
 
   static const TextStyle titleRegular = TextStyle(
     fontSize: 18,
