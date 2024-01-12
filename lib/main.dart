@@ -1,5 +1,5 @@
-import 'package:bet_easy/features/home/presentation/pages/home_screen.dart';
 import 'package:bet_easy/features/skeleton/skeleton_screen.dart';
+import 'package:bet_easy/features/track/presentation/pages/track_screen.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,12 +9,12 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,

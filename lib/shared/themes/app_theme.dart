@@ -47,6 +47,4 @@ class AppTheme {
     height: 25 / 14,
     fontWeight: FontWeight.w600,
   );
-
-// TODO add inter font to pubspec.yaml
 }
