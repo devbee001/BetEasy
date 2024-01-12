@@ -8,10 +8,6 @@ class Skeleton extends ConsumerWidget {
   const Skeleton({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<Widget> pages = [
-      Container(),
-      const Material(),
-    ];
     return const Scaffold(
       body: SafeArea(child: HomeScreen()),
       bottomNavigationBar: SkeletonNavigationBar(),
