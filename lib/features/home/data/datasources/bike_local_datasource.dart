@@ -9,9 +9,10 @@ class BikeLocalDataSourceImpl implements BikeLocalDataSource {
   Future<BikeModel> getBikeDetail() async {
     try {
       final getBikeDetail = await Future.delayed(
-          const Duration(minutes: 2),
+          const Duration(seconds: 60),
           () => {
                 'bikeImage': [
+                  'assets/images/bike_image.png',
                   'assets/images/bike_image.png',
                   'assets/images/bike_image.png',
                   'assets/images/bike_image.png'
@@ -20,12 +21,13 @@ class BikeLocalDataSourceImpl implements BikeLocalDataSource {
                 'orderReceipt': 'SCP6653728497',
                 'postalFee': '2,50 USD',
                 'country': 'Sukabunmi, Indonesia',
-                'eta': '',
+                'eta': '2h 40m',
                 'parcelWeight': '24 kg',
                 'inDelivery': 'Bali, Indonesia',
                 'transit': 'Jarkarta, Indonesia',
                 'from': 'Sukabunmi, Indonesia',
               });
+      print("function invoked -$getBikeDetail");
 
       return BikeModel.fromJson(getBikeDetail);
     } catch (e) {

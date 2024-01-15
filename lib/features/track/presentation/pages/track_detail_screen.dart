@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:bet_easy/features/track/presentation/widgets/package_id_container.dart';
 import 'package:bet_easy/features/track/presentation/widgets/track_line.dart';

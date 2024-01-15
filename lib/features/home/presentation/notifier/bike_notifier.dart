@@ -4,8 +4,7 @@ import 'package:bet_easy/features/home/data/repositories/bike_repository_impl.da
 import 'package:bet_easy/features/home/presentation/notifier/bike_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final bikeNotifierProvider =
-    StateNotifierProvider<BikeNotifier, BikeState>((ref) {
+final bikeProvider = StateNotifierProvider<BikeNotifier, BikeState>((ref) {
   return BikeNotifier(const BikeState());
 });
 
@@ -16,7 +15,10 @@ class BikeNotifier extends StateNotifier<BikeState> {
         BikeRepositoryImpl(localDataSource: BikeLocalDataSourceImpl());
     final failureOrBike =
         await GetBikeDetail(bikeRepository: repository).call();
-    failureOrBike.fold((failure) => state.copyWith(failure: failure),
-        (bikeEntity) => state.copyWith(bikeEntity: bikeEntity));
+    failureOrBike.fold((failure) {
+      state = state.copyWith(failure: failure);
+    }, (bikeEntity) {
+      state = state.copyWith(bikeEntity: bikeEntity);
+    });
   }
 }

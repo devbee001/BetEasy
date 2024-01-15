@@ -17,10 +17,12 @@ class TrackModalSheet extends ConsumerStatefulWidget {
 class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
   final _sheet = GlobalKey();
   final _controller = DraggableScrollableController();
+
   @override
   void initState() {
     super.initState();
     _controller.addListener(_onChanged);
+    setState(() {});
   }
 
   void _onChanged() {
@@ -48,7 +50,6 @@ class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
       return DraggableScrollableSheet(
         key: _sheet,
         initialChildSize: 0.13,
-        // 0.12,
         maxChildSize: 0.8,
         minChildSize: 0,
         expand: true,
@@ -61,9 +62,6 @@ class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black26,
-                    // _controller.size == 0.8
-                    //     ? Colors.black26
-                    //     : Colors.transparent,
                     offset: const Offset(2.0, 2.0),
                     blurRadius: 10.0,
                     spreadRadius: MediaQuery.of(context).size.height * 0.2,

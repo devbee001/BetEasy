@@ -1,8 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bet_easy/core/errors/failure.dart';
+import 'package:bet_easy/features/home/business/entities/bike_entity.dart';
+import 'package:bet_easy/features/home/presentation/notifier/bike_notifier.dart';
 import 'package:bet_easy/features/home/presentation/notifier/bike_page_notifier.dart';
 import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
+import 'package:bet_easy/shared/widgets/custom_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -126,37 +130,57 @@ class BikeViewState extends ConsumerState<BikeView> {
 
   @override
   Widget build(BuildContext context) {
+    BikeEntity? bike = ref.watch(bikeProvider).bikeEntity;
+    Failure? failure = ref.watch(bikeProvider).failure;
     return NotificationListener<ScrollNotification>(
-      onNotification: (notification) {
-        if (notification is ScrollEndNotification ||
-            notification is UserScrollNotification) {
-          return true;
-        }
-        return false;
-      },
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(
-            4,
-            (index) => Container(
-              width: 255,
-              height: 265,
-              margin: const EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: AppTheme.secondaryColor,
-                image: const DecorationImage(
-                  scale: 2,
-                  image: AssetImage('assets/images/bike_image.png'),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+        onNotification: (notification) {
+          if (notification is ScrollEndNotification ||
+              notification is UserScrollNotification) {
+            return true;
+          }
+          return false;
+        },
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          scrollDirection: Axis.horizontal,
+          child: failure != null
+              ? const Text('Error')
+              : bike != null
+                  ? Row(
+                      children: List.generate(
+                          bike.bikeImage.length,
+                          (index) => Container(
+                                width: 255,
+                                height: 265,
+                                margin: const EdgeInsets.only(right: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppTheme.secondaryColor,
+                                  image: DecorationImage(
+                                    scale: 2,
+                                    image: AssetImage(
+                                        bike.bikeImage[index].toString()),
+                                  ),
+                                ),
+                              )),
+                    )
+                  : Row(
+                      children: List.generate(
+                      4,
+                      (index) => Container(
+                        width: 255,
+                        height: 265,
+                        margin: const EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppTheme.secondaryColor,
+                        ),
+                        child: const Center(
+                          child: CustomLoader(),
+                        ),
+                      ),
+                    )),
+        ));
   }
 }
 
@@ -189,21 +213,26 @@ class HomeHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    BikeEntity? bike = ref.watch(bikeProvider).bikeEntity;
+    Failure? failure = ref.watch(bikeProvider).failure;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          margin: const EdgeInsets.only(left: 20),
-          width: 45,
-          height: 45,
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.red,
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  scale: 2,
-                  image: AssetImage('assets/images/avatar.png'))),
-        ),
+        failure != null
+            ? const Text('Error')
+            : bike != null
+                ? Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            scale: 2,
+                            image: AssetImage(bike.profileImage))),
+                  )
+                : const CustomLoader(),
         Container(
           margin: const EdgeInsets.only(right: 20),
           width: 45,

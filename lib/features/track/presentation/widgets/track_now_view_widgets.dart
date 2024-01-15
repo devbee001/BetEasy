@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bet_easy/core/errors/failure.dart';
+import 'package:bet_easy/features/home/business/entities/bike_entity.dart';
+import 'package:bet_easy/features/home/presentation/notifier/bike_notifier.dart';
 import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
+import 'package:bet_easy/shared/widgets/custom_loader.dart';
 import 'package:bet_easy/shared/widgets/custom_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -65,37 +69,52 @@ class DeliveryStatusTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    BikeEntity? bike = ref.watch(bikeProvider).bikeEntity;
+    Failure? failure = ref.watch(bikeProvider).failure;
     return ListView.builder(
         itemCount: 2,
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return ListTile(
-              title: const Text(
-                'SCPRREJWUS',
-                style: AppTheme.bodyMedium,
-              ),
-              subtitle: Text(
-                'in the process',
-                style:
-                    AppTheme.bodyRegular.copyWith(color: AppTheme.textColor2),
-              ),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 18,
-                ),
-              ),
-              leading: Container(
-                width: 50.w,
-                height: 50.h,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppTheme.secondaryColor,
-                    image: DecorationImage(
-                        scale: 2,
-                        image: AssetImage('assets/images/icon-google.png'))),
-              ),
+              title: failure != null
+                  ? const Text('Error')
+                  : bike != null
+                      ? Text(
+                          bike.orderReceipt,
+                          style: AppTheme.bodyMedium,
+                        )
+                      : const CustomLoader(),
+              subtitle: bike == null
+                  ? const SizedBox.shrink()
+                  : Text(
+                      index == 0 ? 'In the Process' : 'In Delivery',
+                      style: AppTheme.bodyRegular
+                          .copyWith(color: AppTheme.textColor2),
+                    ),
+              trailing: bike == null
+                  ? const SizedBox.shrink()
+                  : IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 18,
+                      ),
+                    ),
+              leading: failure != null
+                  ? const SizedBox.shrink()
+                  : Container(
+                      width: 50.w,
+                      height: 50.h,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppTheme.secondaryColor,
+                      ),
+                      child: Center(
+                          child: Text(
+                        index == 0 ? '📦' : "🚚",
+                        style: const TextStyle(fontSize: 24),
+                      )),
+                    ),
               contentPadding: const EdgeInsets.only(left: 15, right: 15));
         });
   }

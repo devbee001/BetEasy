@@ -1,4 +1,8 @@
+import 'package:bet_easy/core/errors/failure.dart';
+import 'package:bet_easy/features/home/business/entities/bike_entity.dart';
+import 'package:bet_easy/features/home/presentation/notifier/bike_notifier.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
+import 'package:bet_easy/shared/widgets/custom_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +14,8 @@ class PackageIdContainer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    BikeEntity? bike = ref.watch(bikeProvider).bikeEntity;
+    Failure? failure = ref.watch(bikeProvider).failure;
     return Container(
       width: double.infinity,
       height: 60.h,
@@ -26,11 +32,15 @@ class PackageIdContainer extends ConsumerWidget {
           ),
           borderRadius: BorderRadius.circular(50),
         ),
-        child: const Center(
-            child: Text(
-          'SCPRTEUIWOITY',
-          style: AppTheme.bodyRegular,
-        )),
+        child: Center(
+            child: failure != null
+                ? const Text('Error')
+                : bike != null
+                    ? Text(
+                        bike.orderReceipt,
+                        style: AppTheme.bodyRegular,
+                      )
+                    : const CustomLoader()),
       ),
     );
   }
