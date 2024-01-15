@@ -2,10 +2,10 @@ class BikeEntity {
   final List<String> bikeImage;
   final String profileImage;
   final String orderReceipt;
-  final num postalFee;
+  final String postalFee;
   final String country;
   final String eta;
-  final num parcelWeight;
+  final String parcelWeight;
   final String inDelivery;
   final String transit;
   final String from;
