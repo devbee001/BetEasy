@@ -47,7 +47,7 @@ class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
     return LayoutBuilder(builder: (context, constraints) {
       return DraggableScrollableSheet(
         key: _sheet,
-        initialChildSize: 0.12,
+        initialChildSize: 0.13,
         // 0.12,
         maxChildSize: 0.8,
         minChildSize: 0,

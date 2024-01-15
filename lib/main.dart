@@ -1,5 +1,4 @@
-import 'package:bet_easy/features/skeleton/skeleton_screen.dart';
-import 'package:bet_easy/features/track/presentation/pages/track_screen.dart';
+import 'package:bet_easy/shared/routes/app_router.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,10 +19,12 @@ class MyApp extends ConsumerWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.themeData,
-              home: const Skeleton());
+          AppRouter appRouter = AppRouter();
+          return MaterialApp.router(
+            routerConfig: appRouter.config(),
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.themeData,
+          );
         });
   }
 }

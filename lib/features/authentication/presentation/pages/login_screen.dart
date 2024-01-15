@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/auth_rich_text.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/page_indicator.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/stacked_image.dart';
@@ -9,6 +10,7 @@ import 'package:bet_easy/shared/widgets/custom_sizedbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+@RoutePage()
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
   @override
