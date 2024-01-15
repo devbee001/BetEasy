@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
 import 'package:bet_easy/shared/widgets/custom_sizedbox.dart';
@@ -111,7 +113,9 @@ class HomeCustomButton extends ConsumerWidget {
       child: CustomButton(
         trailingWidth: 149.w,
         btnText: 'Track Now',
-        onPressed: () {},
+        onPressed: () {
+          context.router.push(const TrackDetailRoute());
+        },
         trailing: true,
       ),
     );

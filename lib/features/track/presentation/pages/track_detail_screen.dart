@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:bet_easy/features/track/presentation/widgets/package_id_container.dart';
 import 'package:bet_easy/features/track/presentation/widgets/track_line.dart';
 import 'package:bet_easy/features/track/presentation/widgets/track_modal_sheet.dart';
@@ -35,7 +36,9 @@ class TrackDetailScreenState extends ConsumerState<TrackDetailScreen> {
             child: Row(
               children: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.router.pop();
+                    },
                     icon: const Icon(
                       Icons.arrow_back_ios,
                       size: 18,

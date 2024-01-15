@@ -1,4 +1,4 @@
-import 'package:bet_easy/features/home/presentation/widgets/track_now_view_widgets.dart';
+import 'package:bet_easy/features/track/presentation/widgets/track_now_view_widgets.dart';
 import 'package:bet_easy/features/home/presentation/widgets/your_order_view_widgets.dart';
 import 'package:bet_easy/shared/widgets/custom_sizedbox.dart';
 import 'package:flutter/material.dart';
