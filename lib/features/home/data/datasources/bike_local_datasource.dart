@@ -11,8 +11,12 @@ class BikeLocalDataSourceImpl implements BikeLocalDataSource {
       final getBikeDetail = await Future.delayed(
           const Duration(minutes: 2),
           () => {
-                'bikeImage': [],
-                'profileImage': '',
+                'bikeImage': [
+                  'assets/images/bike_image.png',
+                  'assets/images/bike_image.png',
+                  'assets/images/bike_image.png'
+                ],
+                'profileImage': 'assets/images/avatar.png',
                 'orderReceipt': 'SCP6653728497',
                 'postalFee': '2,50 USD',
                 'country': 'Sukabunmi, Indonesia',

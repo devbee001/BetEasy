@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bet_easy/features/home/presentation/notifier/bike_page_notifier.dart';
 import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
@@ -79,8 +80,8 @@ class BikeViewPageIndicator extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SmoothPageIndicator(
-      controller: PageController(),
+    return AnimatedSmoothIndicator(
+      activeIndex: ref.watch(bikePageProvider).currentIndex,
       count: 4,
       effect: const SlideEffect(
           spacing: 8.0,
@@ -94,21 +95,66 @@ class BikeViewPageIndicator extends ConsumerWidget {
   }
 }
 
-class BikeView extends ConsumerWidget {
-  const BikeView({
-    super.key,
-  });
+class BikeView extends ConsumerStatefulWidget {
+  const BikeView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      width: 255,
-      height: 265,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: AppTheme.secondaryColor,
-        image: const DecorationImage(
-            scale: 2, image: AssetImage('assets/images/bike_image.png')),
+  BikeViewState createState() => BikeViewState();
+}
+
+class BikeViewState extends ConsumerState<BikeView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Listen to scroll events and update the currentIndex
+    _scrollController.addListener(() {
+      final int newIndex = (_scrollController.offset / 255).round();
+      if (newIndex != ref.watch(bikePageProvider).currentIndex) {
+        ref.read(bikePageProvider.notifier).updateIndex(newIndex);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollEndNotification ||
+            notification is UserScrollNotification) {
+          return true;
+        }
+        return false;
+      },
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(
+            4,
+            (index) => Container(
+              width: 255,
+              height: 265,
+              margin: const EdgeInsets.only(right: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: AppTheme.secondaryColor,
+                image: const DecorationImage(
+                  scale: 2,
+                  image: AssetImage('assets/images/bike_image.png'),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

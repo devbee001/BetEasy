@@ -40,7 +40,7 @@ class LoginScreen extends ConsumerWidget {
                       btnText: 'Login with Google',
                       leading: true,
                       onPressed: () {
-                        context.router.push(const Skeleton());
+                        context.router.replace(const Skeleton());
                       },
                     ),
                   ),
