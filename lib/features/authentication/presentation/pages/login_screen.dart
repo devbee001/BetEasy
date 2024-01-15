@@ -1,8 +1,9 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/auth_rich_text.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/page_indicator.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/stacked_image.dart';
 import 'package:bet_easy/features/authentication/presentation/widgets/welcome_note.dart';
+import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
 
@@ -33,12 +34,14 @@ class LoginScreen extends ConsumerWidget {
                   Space.h(
                     45,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
                     child: CustomButton(
                       btnText: 'Login with Google',
                       leading: true,
-                      onPressed: null,
+                      onPressed: () {
+                        context.router.push(const Skeleton());
+                      },
                     ),
                   ),
                   Space.h(

@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:bet_easy/shared/routes/app_router.gr.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:bet_easy/shared/widgets/custom_buttom.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +63,9 @@ class OrderSection extends ConsumerWidget {
             leadingWidth: 15,
             trailing: true,
             width: 183,
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(const TrackRoute());
+            },
             btnText: 'Your Orders'),
       ]),
     );

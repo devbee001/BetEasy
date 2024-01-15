@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:bet_easy/shared/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +15,7 @@ class SkeletonNavigationBar extends ConsumerWidget {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        currentIndex: 0,
+        currentIndex: AutoTabsRouter.of(context).activeIndex,
         onTap: (index) {},
         unselectedItemColor: AppTheme.borderColor,
         selectedItemColor: AppTheme.backgroundColor,

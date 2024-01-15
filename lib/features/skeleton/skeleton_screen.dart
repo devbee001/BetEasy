@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:bet_easy/features/home/presentation/pages/home_screen.dart';
 import 'package:bet_easy/features/skeleton/widgets/skeleton_nav_bar.dart';
 import 'package:bet_easy/shared/routes/app_router.gr.dart';
 
@@ -16,9 +15,9 @@ class Skeleton extends ConsumerWidget {
         HomeRoute(),
       ],
       builder: (context, child) {
-        return const Scaffold(
-          body: SafeArea(child: HomeScreen()),
-          bottomNavigationBar: SkeletonNavigationBar(),
+        return Scaffold(
+          body: SafeArea(child: child),
+          bottomNavigationBar: const SkeletonNavigationBar(),
         );
       },
     );
