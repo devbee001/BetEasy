@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final ThemeData themeData = ThemeData(
-    //  useMaterial3: true,
     fontFamily: 'Inter',
   );
 
@@ -29,24 +28,18 @@ class AppTheme {
   static const TextStyle titleRegular = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w700,
-    height: 22 / 18,
     color: textHeaderColor,
   );
 
   static const TextStyle titleLarge = TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w600,
-      height: 32 / 24,
-      color: textHeaderColor2);
+      fontSize: 24, fontWeight: FontWeight.w600, color: textHeaderColor2);
 
   static const TextStyle bodyRegular = TextStyle(
     fontSize: 14,
-    height: 36 / 14,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle bodyMedium = TextStyle(
     fontSize: 14,
-    height: 25 / 14,
     fontWeight: FontWeight.w600,
   );
 }

@@ -8,15 +8,18 @@ class WelcomeNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text(
-          'Welcome Bikes to E-Bikes',
-          style: AppTheme.titleLarge,
-        ),
-        Text("Buying Electric bikes just got a lot easier, Try us today.",
-            style: AppTheme.bodyRegular.copyWith(color: AppTheme.textColor1)),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      child: Column(
+        children: [
+          const Text(
+            'Welcome Bikes to E-Bikes',
+            style: AppTheme.titleLarge,
+          ),
+          Text("Buying Electric bikes just got a lot easier, Try us today.",
+              style: AppTheme.bodyRegular.copyWith(color: AppTheme.textColor1)),
+        ],
+      ),
     );
   }
 }

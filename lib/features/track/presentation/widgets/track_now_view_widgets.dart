@@ -130,7 +130,7 @@ class HomeCustomButton extends ConsumerWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: CustomButton(
-        trailingWidth: 149.w,
+        trailingWidth: 146.w,
         btnText: 'Track Now',
         onPressed: () {
           context.router.push(const TrackDetailRoute());
@@ -217,7 +217,7 @@ class HomeStackedImage extends ConsumerWidget {
               alignment: const Alignment(-1, 1),
               child: Container(
                 margin: EdgeInsets.only(left: 22.w),
-                height: 60.h,
+                height: 63.h,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
