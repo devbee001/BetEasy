@@ -25,9 +25,8 @@ class BikeLocalDataSourceImpl implements BikeLocalDataSource {
                 'parcelWeight': '24 kg',
                 'inDelivery': 'Bali, Indonesia',
                 'transit': 'Jarkarta, Indonesia',
-                'from': 'Sukabunmi, Indonesia',
+                'from': 'Sukabunmi, Indonesia'
               });
-      print("function invoked -$getBikeDetail");
 
       return BikeModel.fromJson(getBikeDetail);
     } catch (e) {
