@@ -9,7 +9,7 @@ class BikeLocalDataSourceImpl implements BikeLocalDataSource {
   Future<BikeModel> getBikeDetail() async {
     try {
       final getBikeDetail = await Future.delayed(
-          const Duration(seconds: 60),
+          const Duration(minutes: 2),
           () => {
                 'bikeImage': [
                   'assets/images/bike_image.png',
