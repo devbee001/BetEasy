@@ -59,12 +59,12 @@ class _TrackModalSheetState extends ConsumerState<TrackModalSheet> {
     return LayoutBuilder(builder: (context, constraints) {
       return DraggableScrollableSheet(
         key: _sheet,
-        initialChildSize: 0.13,
+        initialChildSize: 0.12,
         maxChildSize: 0.8,
         minChildSize: 0,
         expand: true,
         snap: true,
-        snapSizes: const [0.13, 0.8],
+        snapSizes: const [0.12, 0.8],
         controller: _controller,
         builder: (BuildContext context, ScrollController scrollController) {
           return Container(
