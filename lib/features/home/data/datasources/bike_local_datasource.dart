@@ -1,15 +1,15 @@
 import 'package:bet_easy/features/home/data/model/bike_model.dart';
 
 abstract class BikeLocalDataSource {
-  Future<BikeModel> getBikeDetail();
+  Future<BikeModel> getBikeDetail({required double mins});
 }
 
 class BikeLocalDataSourceImpl implements BikeLocalDataSource {
   @override
-  Future<BikeModel> getBikeDetail() async {
+  Future<BikeModel> getBikeDetail({required double mins}) async {
     try {
       final getBikeDetail = await Future.delayed(
-          const Duration(minutes: 2),
+          Duration(minutes: mins.toInt()),
           () => {
                 'bikeImage': [
                   'assets/images/bike_image.png',

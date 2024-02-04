@@ -11,7 +11,7 @@ class BikeRepositoryImpl implements BikeRepository {
   @override
   Future<Either<Failure, BikeModel>> getBikeDetail() async {
     try {
-      final getBikeDetail = await localDataSource.getBikeDetail();
+      final getBikeDetail = await localDataSource.getBikeDetail(mins: 2);
       return Right(getBikeDetail);
     } on Exception {
       return const Left(Failure(errorMessage: 'It is Not You,It is us'));
